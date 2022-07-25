@@ -8,7 +8,8 @@ import zhCn from "element-plus/es/locale/lang/zh-cn"
 import * as ElIcons from "@element-plus/icons-vue"
 import * as AntIcons from "@ant-design/icons-vue"
 import Ant from "@/plugins/ant-design"
-
+// import "ant-design-vue/dist/antd.css" // or 'ant-design-vue/dist/antd.less'
+// import "ant-design-vue/lib/menu/style/css" // or 'ant-design-vue/dist/antd.less'
 const el = createApp(App)
 
 el.use(store)

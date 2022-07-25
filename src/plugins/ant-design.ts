@@ -17,6 +17,7 @@ import {
   TimePicker,
   Checkbox,
 } from "ant-design-vue"
+
 const ant_design = {
   DatePicker,
   Form,
@@ -35,5 +36,7 @@ const ant_design = {
   Modal,
   TimePicker,
   Checkbox,
+  MenuItem: Menu.Item,
+  SubMenu: Menu.SubMenu,
 }
 export default ant_design

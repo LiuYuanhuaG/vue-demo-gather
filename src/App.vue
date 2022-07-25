@@ -1,10 +1,11 @@
 <template>
 
   <ConfigProvider :locale="locale">
-    <nav>
+    <!-- <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-    </nav>
+    </nav> -->
+    <Menu></Menu>
     <router-view />
   </ConfigProvider>
 </template>
@@ -15,6 +16,8 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import { ref } from 'vue'
 import { ConfigProvider } from 'ant-design-vue';
+import Menu from '@/layout/Menu.vue'
+
 dayjs.locale('zh-cn');
 
 const locale = ref(zhCN)
