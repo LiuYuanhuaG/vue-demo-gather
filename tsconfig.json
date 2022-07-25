@@ -13,7 +13,7 @@
     "useDefineForClassFields": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["webpack-env", "node"], //这里需要添加node 否则无法识别node中部分
+    "types": ["webpack-env", "node", "element-plus/global"], //这里需要添加node 否则无法识别node中部分
     "paths": {
       "@/*": ["src/*"]
     },

@@ -1,63 +1,74 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-vuex" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript" target="_blank" rel="noopener">typescript</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
-  </div>
+  <a-button>Add</a-button>
+  <step-backward-outlined />
+  <el-form :model="form" label-width="120px">
+    <el-form-item label="Activity name">
+      <el-input v-model="form.name" />
+    </el-form-item>
+    <el-form-item label="Activity zone">
+      <el-select v-model="form.region" placeholder="please select your zone">
+        <el-option label="Zone one" value="shanghai" />
+        <el-option label="Zone two" value="beijing" />
+      </el-select>
+    </el-form-item>
+    <el-form-item label="Activity time">
+      <el-col :span="11">
+        <el-date-picker v-model="form.date1" type="date" placeholder="Pick a date" style="width: 100%" />
+      </el-col>
+      <el-col :span="2" class="text-center">
+        <span class="text-gray-500">-</span>
+      </el-col>
+      <el-col :span="11">
+        <el-time-picker v-model="form.date2" placeholder="Pick a time" style="width: 100%" />
+      </el-col>
+    </el-form-item>
+    <el-form-item label="Instant delivery">
+      <el-switch v-model="form.delivery" />
+    </el-form-item>
+    <el-form-item label="Activity type">
+      <el-checkbox-group v-model="form.type">
+        <el-checkbox label="Online activities" name="type" />
+        <el-checkbox label="Promotion activities" name="type" />
+        <el-checkbox label="Offline activities" name="type" />
+        <el-checkbox label="Simple brand exposure" name="type" />
+      </el-checkbox-group>
+    </el-form-item>
+    <el-form-item label="Resources">
+      <el-radio-group v-model="form.resource">
+        <el-radio label="Sponsor" />
+        <el-radio label="Venue" />
+      </el-radio-group>
+    </el-form-item>
+    <el-form-item label="Activity form">
+      <el-input v-model="form.desc" type="textarea" />
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" @click="onSubmit">Create</el-button>
+      <el-button>Cancel</el-button>
+    </el-form-item>
+  </el-form>
 </template>
+<script lang="ts" setup>
+import { defineComponent, reactive } from 'vue';
+interface FormState {
+  username: string;
+  password: string;
+  remember: boolean;
+}
+// do not use same name with ref
+const form = reactive({
+  name: '',
+  region: '',
+  date1: '',
+  date2: '',
+  delivery: false,
+  type: [],
+  resource: '',
+  desc: '',
+})
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'HelloWorld',
-  props: {
-    msg: String,
-  },
-});
+const onSubmit = () => {
+  console.log('submit!')
+}
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
