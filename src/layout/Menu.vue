@@ -1,99 +1,87 @@
 <template>
-  <div style="width: 256px">
-    <a-button type="primary" style="margin-bottom: 16px" @click="toggleCollapsed">
-      <MenuUnfoldOutlined v-if="collapsed" />
-      <MenuFoldOutlined v-else />
-    </a-button>
-    <a-menu v-model:openKeys="openKeys" v-model:selectedKeys="selectedKeys" mode="inline" theme="dark"
-      :inline-collapsed="collapsed">
-      <a-menu-item key="1">
-        <template #icon>
-          <PieChartOutlined />
-        </template>
-        <span>Option 1</span>
+  <a-menu v-model:selectedKeys="selectedKeys" @select="handleChange" theme="dark" mode="inline">
+    <template v-for="(item) in routerList">
+      <a-menu-item v-if="!item.children" :key="item.path">
+        <pie-chart-outlined />
+        <span>{{ item.name }}</span>
       </a-menu-item>
-      <a-menu-item key="2">
-        <template #icon>
-          <DesktopOutlined />
+      <a-sub-menu :key="item.path + ''" v-else>
+        <template #title>
+          <span>
+            <span>{{ item.name }}</span>
+          </span>
         </template>
-        <span>Option 2</span>
-      </a-menu-item>
-      <a-menu-item key="3">
-        <template #icon>
-          <InboxOutlined />
-        </template>
-        <span>Option 3</span>
-      </a-menu-item>
-      <a-sub-menu key="sub1">
-        <template #icon>
-          <MailOutlined />
-        </template>
-        <template #title>Navigation One</template>
-        <a-menu-item key="5">Option 5</a-menu-item>
-        <a-menu-item key="6">Option 6</a-menu-item>
-        <a-menu-item key="7">Option 7</a-menu-item>
-        <a-menu-item key="8">Option 8</a-menu-item>
+        <a-menu-item :key="it.path" v-for="(it) in item.children">{{ it.name }}</a-menu-item>
       </a-sub-menu>
-      <a-sub-menu key="sub2">
-        <template #icon>
-          <AppstoreOutlined />
-        </template>
-        <template #title>Navigation Two</template>
-        <a-menu-item key="9">Option 9</a-menu-item>
-        <a-menu-item key="10">Option 10</a-menu-item>
-        <a-sub-menu key="sub3" title="Submenu">
-          <a-menu-item key="11">Option 11</a-menu-item>
-          <a-menu-item key="12">Option 12</a-menu-item>
-        </a-sub-menu>
-      </a-sub-menu>
-    </a-menu>
-  </div>
+    </template>
+  </a-menu>
 </template>
-<script lang="ts">
-import { defineComponent, reactive, toRefs, watch } from 'vue';
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  PieChartOutlined,
-  MailOutlined,
-  DesktopOutlined,
-  InboxOutlined,
-  AppstoreOutlined,
-} from '@ant-design/icons-vue';
-export default defineComponent({
-  components: {
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
-    PieChartOutlined,
-    MailOutlined,
-    DesktopOutlined,
-    InboxOutlined,
-    AppstoreOutlined,
-  },
-  setup() {
-    const state = reactive({
-      collapsed: false,
-      selectedKeys: ['1'],
-      openKeys: ['sub1'],
-      preOpenKeys: ['sub1'],
-    });
+<script  lang="ts" >
+import { ref, defineComponent, watch } from 'vue';
+import { useRoute } from 'vue-router'
+import router from '@/router';
+import routes from '@/router/routes';
 
+
+export default defineComponent({
+  setup(props, emits) {
+    // const emits = defineEmits(['steBreadcrumb'])
+    const re = useRoute()
+
+    const routerList = ref<any[]>(routes)
+
+    let selectedKeys = ref<string[]>(['/'])
+    let handleChange = (e: any) => {
+      let path = e.keyPath.join('/')
+      path && router.push(path)
+
+    }
     watch(
-      () => state.openKeys,
-      (_val, oldVal) => {
-        state.preOpenKeys = oldVal;
-      },
-    );
-    const toggleCollapsed = () => {
-      state.collapsed = !state.collapsed;
-      state.openKeys = state.collapsed ? [] : state.preOpenKeys;
-    };
+      () => re.fullPath,
+      newId => {
+        // console.log(newId, selectedKeys.value, newId.split('/'), 'newId');
+        if (newId == '/') {
+          emits.emit('steBreadcrumb', ['/'])
+          selectedKeys.value = ['/']
+          return
+        }
+        let list = newId.split('/')
+        let arr: any = []
+        list.forEach((item, i) => {
+          if (item) {
+            if (i == 1) {
+              item = `/${item}`
+            }
+            arr.push(item)
+          }
+        })
+        emits.emit('steBreadcrumb', arr)
+        selectedKeys.value = arr
+      }
+    )
 
     return {
-      ...toRefs(state),
-      toggleCollapsed,
-    };
+      handleChange,
+      selectedKeys,
+      routerList
+    }
   },
-});
+
+})
+
+
 </script>
 
+<style lang="scss">
+.menu_btn {
+  position: absolute;
+  left: 180px;
+  transition: left 400ms ease;
+
+}
+
+.menu_btn_l {
+  left: 82px;
+  transition: left 1s ease;
+}
+</style>

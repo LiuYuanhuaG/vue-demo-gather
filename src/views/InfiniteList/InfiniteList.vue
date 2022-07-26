@@ -135,7 +135,7 @@ onMounted(() => {
   /* background: url('@/assets/kk.jpg'); */
   background-size: 100% 100%;
   bottom: 101px;
-  right: 30px;
+  right: 40px;
   z-index: 10000;
   width: 50px;
   height: 50px;

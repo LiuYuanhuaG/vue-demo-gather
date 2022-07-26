@@ -1,11 +1,14 @@
 export default {
-  path: '/InfiniteList',
-  name: 'InfiniteListIndex',
+  path: "/Infinite",
+  name: "InfiniteListIndex",
   // redirect: '/InfiniteList/InfiniteList',
-  component: () => import('@/views/InfiniteList/Index.vue'),
-  children: [{
-    path: 'InfiniteList',
-    name: 'InfiniteList',
-    component: () => import('@/views/InfiniteList/InfiniteList.vue'),
-  }]
-};
+  component: () => import("@/views/InfiniteList/Index.vue"),
+  children: [
+    {
+      path: "InfiniteList",
+      name: "InfiniteList",
+      component: () => import("@/views/InfiniteList/InfiniteList.vue"),
+    },
+  ],
+}
+

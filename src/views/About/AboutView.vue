@@ -13,7 +13,7 @@ import router from '@/router';
 import { useDark, useToggle, useColorMode } from '@vueuse/core'
 
 const isDark = useDark({
-  selector: 'body',
+  selector: 'section[aa]',
   attribute: 'color-scheme',
   valueDark: 'dark',
   valueLight: 'light',

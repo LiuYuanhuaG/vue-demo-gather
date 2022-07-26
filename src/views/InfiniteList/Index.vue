@@ -2,7 +2,6 @@
   <div class="box_L">
     <div @click="handleClicks('About')">跳转about</div>
     <div @click="handleClicks('AboutCopy')">跳转AboutCopy</div>
-    <router-view></router-view>
     <InfiniteList :arr="arr">
       <template #content="{ itemData }">
         <div>{{ itemData.title }}</div>
@@ -29,5 +28,6 @@ const handleClicks = (path) => {
 <style lang="scss">
 .box_L {
   height: 100%;
+  min-height: 100px;
 }
 </style>

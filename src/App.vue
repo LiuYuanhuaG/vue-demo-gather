@@ -1,12 +1,6 @@
 <template>
-
   <ConfigProvider :locale="locale">
-    <!-- <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav> -->
-    <Menu></Menu>
-    <router-view />
+    <Layout></Layout>
   </ConfigProvider>
 </template>
 
@@ -16,7 +10,7 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import { ref } from 'vue'
 import { ConfigProvider } from 'ant-design-vue';
-import Menu from '@/layout/Menu.vue'
+import Layout from '@/layout/Index.vue'
 
 dayjs.locale('zh-cn');
 
@@ -30,18 +24,5 @@ const locale = ref(zhCN)
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>
