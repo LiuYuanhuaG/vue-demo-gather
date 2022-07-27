@@ -19,9 +19,17 @@ const isDark = useDark({
   valueLight: 'light',
 })
 const toggleDark = useToggle(isDark)
+const isDarks = useDark({
+  selector: 'div[con]',
+  attribute: 'color-scheme',
+  valueDark: 'dark',
+  valueLight: 'light',
+})
+const toggleDarks = useToggle(isDarks)
 
 const handleClick = () => {
   toggleDark()
+  toggleDarks()
 }
 const handleClicks = (path) => {
   console.log(path);
@@ -32,8 +40,12 @@ const handleClicks = (path) => {
 console.log(toggleDark);
 </script>
 <style lang="scss">
-body[color-scheme='dark'] {
+section[color-scheme='dark'] {
   background-color: aquamarine;
-  color: #fff
+  // color: #fff
+}
+
+div[color-scheme='dark'] {
+  background-color: cadetblue !important;
 }
 </style>

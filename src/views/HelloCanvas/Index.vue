@@ -1,11 +1,12 @@
 <template>
-  <div>
-    <div @click="handleChange(draw)">图片</div>
-    <div @click="handleChange(init)">全景图片</div>
-    <div @click="handleChange(initMu)">万花筒</div>
-    <canvas ref="canvas" id="canvas" width="1920" height="1080"></canvas>
-    <div id="item-1"></div>
-    <div id="item-2"></div>
+  <div style="{width: 100%;height: 100% ;}">
+    <!-- <div @click=" handleChange(draw)">图片</div>
+  <div @click="handleChange(init)">全景图片</div>
+  <div @click="handleChange(initMu)">万花筒</div>
+  <canvas ref="canvas" id="canvas" width="1920" height="1080"></canvas>
+  <div id="item-1"></div>
+  <div id="item-2"></div> -->
+    <router-view></router-view>
   </div>
 </template>
 
@@ -348,30 +349,6 @@ onMounted(() => {
   // initMu();
   // draws();
   // call
-  var arr = [
-    { name: "zs", age: 1 },
-    { name: "l4", age: 2 },
-    { name: "w5", age: 3 },
-    { name: "ss", age: 4 },
-  ];
-  var obj = {
-    name: "thisArg",
-    age: 2222,
-  };
-  // arr.forEach(function (item, index, arr) {
-  //   console.log(item, index, arr, this);
-  // }, obj)
-  Array.prototype.myForEach = function (cb) {
-    var _arr = this;
-    var _len = _arr.length;
-    var _arg2 = arguments[1] || window;
-    for (let i = 0; i < _len; i++) {
-      cb.apply(_arg2, [_arr[i], i, _arr]);
-    }
-  };
-  arr.myForEach((item, index, arr) => {
-    console.log(item, index, arr, this);
-  }, obj);
 });
 </script>
 

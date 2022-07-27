@@ -1,10 +1,10 @@
 <template>
-  <div class="home">
+  <!-- <div class="home">
     <HelloWorld></HelloWorld>
-  </div>
+  </div> -->
+  <router-view></router-view>
 </template>
 
 <script lang="ts" setup>
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 
 </script>

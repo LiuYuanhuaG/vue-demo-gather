@@ -8,8 +8,7 @@ import zhCn from "element-plus/es/locale/lang/zh-cn"
 import * as ElIcons from "@element-plus/icons-vue"
 import * as AntIcons from "@ant-design/icons-vue"
 import Ant from "@/plugins/ant-design"
-// import "ant-design-vue/dist/antd.css" // or 'ant-design-vue/dist/antd.less'
-// import "ant-design-vue/lib/menu/style/css" // or 'ant-design-vue/dist/antd.less'
+
 const el = createApp(App)
 
 el.use(store)
@@ -25,7 +24,7 @@ for (const [key, component] of Object.entries(AntIcons)) {
   el.component(key, component)
 }
 for (const [key, component] of Object.entries(Ant)) {
-  el.component(`A${key}`, component) // 因为ant 都是以a开头所以拼接上a
+  el.component(`A${key}`, component) // 因为ant 都是以a开头所以拼接上a 如若组件不生效请手动添加
 }
 
 el.mount("#app")

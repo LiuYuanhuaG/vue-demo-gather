@@ -1,18 +1,12 @@
 <template>
-  <router-view></router-view>
-  <!-- <div id="tree">
+  <div id="tree">
 
-  </div> -->
+  </div>
 </template>
 
 <script>
 import * as THREE from "three";
 import Stats from "three/examples/jsm/libs/stats.module.js";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
-
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 
 import { FirstPersonControls } from "three/examples/jsm/controls/FirstPersonControls.js";
 import { ImprovedNoise } from "three/examples/jsm/math/ImprovedNoise.js";
@@ -24,164 +18,14 @@ export default {
   components: {
 
   },
-  props: {
-    aac: { type: String },
-    user: {
-      type: String,
-      required: true,
-    },
-  },
+
   data: () => {
     return {
-      aa: "123",
       img: require("@/assets/atlas.png"),
     };
   },
   methods: {
-    init: () => {
-      var scene = new THREE.Scene();
 
-      var camera = new THREE.PerspectiveCamera(
-        75,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        1000
-      );
-      var renderer = new THREE.WebGLRenderer();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      document.querySelector("#tree").appendChild(renderer.domElement);
-
-      var geometry1 = new THREE.SphereGeometry(20);
-      var material1 = new THREE.MeshStandardMaterial({
-        color: 0xeeeeee,
-        specular: 0x4488ee,
-        shininess: 120,
-      });
-      console.log(material1);
-      var cube1 = new THREE.Mesh(geometry1, material1);
-      scene.add(cube1);
-      cube1.translateY(60);
-      cube1.translateZ(60);
-      cube1.translateX(60);
-
-      var geometry = new THREE.BoxGeometry(1, 1, 1); // 立方体
-      // var geometry = new THREE.SphereGeometry(1, 1, 1) //几何体
-      var material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
-      var cube = new THREE.Mesh(geometry, material);
-      scene.add(cube);
-
-      camera.position.z = 5;
-
-      // 辅助坐标系  参数250表示坐标系大小，可以根据场景大小去设置
-      var axisHelper = new THREE.AxisHelper(250);
-      scene.add(axisHelper);
-
-      function animate () {
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
-        cube.rotation.z += 0.03;
-
-        cube1.rotation.x += 0.02;
-        requestAnimationFrame(animate);
-
-        renderer.render(scene, camera);
-      }
-      animate();
-      function render () {
-        renderer.render(scene, camera); //执行渲染操作
-      }
-      render();
-      var controls = new OrbitControls(camera, renderer.domElement); //创建控件对象
-      controls.addEventListener("change", render); //监听鼠标、键盘事件
-
-      //点光源
-      var point = new THREE.PointLight(0xffffff);
-      point.position.set(100, 10, 200); //点光源位置
-      scene.add(point); //点光源添加到场景中
-    },
-    init2: () => {
-      let mixer;
-
-      const clock = new THREE.Clock();
-      const container = document.querySelector("#tree");
-
-      const stats = new Stats();
-      container.appendChild(stats.dom);
-
-      const renderer = new THREE.WebGLRenderer({ antialias: true });
-      renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.outputEncoding = THREE.sRGBEncoding;
-      container.appendChild(renderer.domElement);
-
-      const pmremGenerator = new THREE.PMREMGenerator(renderer);
-
-      const scene = new THREE.Scene();
-      scene.background = new THREE.Color(0xbfe3dd);
-      scene.environment = pmremGenerator.fromScene(
-        new RoomEnvironment(),
-        0.04
-      ).texture;
-
-      const camera = new THREE.PerspectiveCamera(
-        40,
-        window.innerWidth / window.innerHeight,
-        1,
-        100
-      );
-      camera.position.set(5, 2, 8);
-
-      const controls = new OrbitControls(camera, renderer.domElement);
-      controls.target.set(0, 0.5, 0);
-      controls.update();
-      controls.enablePan = false;
-      controls.enableDamping = true;
-
-      const dracoLoader = new DRACOLoader();
-      dracoLoader.setDecoderPath("js/libs/draco/gltf/");
-
-      const loader = new GLTFLoader();
-      loader.setDRACOLoader(dracoLoader);
-      loader.load(
-        "models/gltf/LittlestTokyo.glb",
-        function (gltf) {
-          const model = gltf.scene;
-          model.position.set(1, 1, 0);
-          model.scale.set(0.01, 0.01, 0.01);
-          scene.add(model);
-
-          mixer = new THREE.AnimationMixer(model);
-          mixer.clipAction(gltf.animations[0]).play();
-
-          animate();
-        },
-        undefined,
-        function (e) {
-          console.error(e);
-        }
-      );
-
-      window.onresize = function () {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      };
-
-      function animate () {
-        requestAnimationFrame(animate);
-
-        const delta = clock.getDelta();
-
-        mixer.update(delta);
-
-        controls.update();
-
-        stats.update();
-
-        renderer.render(scene, camera);
-      }
-    },
     init3: () => {
       let container, stats;
 
@@ -379,39 +223,10 @@ export default {
   },
 
   mounted () {
-    // this.init()
-    // this.init2()
-    // this.init3()
+    this.init3()
   },
 };
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  /* margin-top: 60px; */
-}
-
-#tree {
-  min-height: 200px;
-  height: 100%;
-  width: 100%;
-
-  canvas {
-    height: 100% !important;
-    width: 100% !important;
-  }
-}
-
-.spanss {
-  color: aqua;
-}
-
-body {
-  margin: 0;
-}
 </style>

@@ -2,19 +2,19 @@
 
 export default {
   path: "/about",
-  name: "about",
+  name: "小功能测试",
   icon: "PieChartOutlined",
   component: () => import("@/views/About/AboutView.vue"),
   children: [
     {
       path: "About",
-      name: "About",
+      name: "useHook测试",
 
       component: () => import("@/views/About/About.vue"),
     },
     {
       path: "AboutCopy",
-      name: "AboutCopy",
+      name: "useHook测试2",
       component: () => import("@/views/About/AboutCopy.vue"),
     },
   ],
