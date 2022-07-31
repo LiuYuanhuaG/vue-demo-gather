@@ -16,8 +16,6 @@ import {
   Modal,
   TimePicker,
   Checkbox,
-  Breadcrumb,
-  PageHeader,
 } from "ant-design-vue"
 
 const ant_design = {
@@ -40,12 +38,5 @@ const ant_design = {
   Checkbox,
   MenuItem: Menu.Item,
   SubMenu: Menu.SubMenu,
-  LayoutHeader: Layout.Header,
-  LayoutContent: Layout.Content,
-  LayoutFooter: Layout.Footer,
-  LayoutSider: Layout.Sider,
-  Breadcrumb,
-  BreadcrumbItem: Breadcrumb.Item,
-  PageHeader,
 }
 export default ant_design

@@ -1,8 +1,11 @@
 <template>
-  <router-view></router-view>
-  <!-- <div id="tree">
+  <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
+  <div>
+  </div>
 
-  </div> -->
+  <div id="tree" :style="`background: url(${require('@/assets/atlas.png')}) no-repeat `">
+
+  </div>
 </template>
 
 <script>
@@ -379,14 +382,14 @@ export default {
   },
 
   mounted () {
-    // this.init()
+    this.init()
     // this.init2()
     // this.init3()
   },
 };
 </script>
 
-<style lang="scss">
+<style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -398,13 +401,8 @@ export default {
 
 #tree {
   min-height: 200px;
-  height: 100%;
-  width: 100%;
-
-  canvas {
-    height: 100% !important;
-    width: 100% !important;
-  }
+  height: 100vh;
+  width: 100wh;
 }
 
 .spanss {

@@ -1,22 +1,37 @@
-// import { PieChartOutlined } from "@ant-design/icons-vue"
-
+import { RightOutlined } from '@ant-design/icons-vue';
 export default {
-  path: "/about",
-  name: "小功能测试",
-  icon: "PieChartOutlined",
-  component: () => import("@/views/About/AboutView.vue"),
+  path: '/about',
+  name: 'about',
+  meta: {
+    title: "about",
+    icon: <RightOutlined />
+  },
   children: [
     {
-      path: "About",
-      name: "useHook测试",
+      path: '/',
+      name: 'about',
+      component: () => import('@/views/About/AboutView.vue'),
+      meta: {
+        title: "AboutView",
 
-      component: () => import("@/views/About/About.vue"),
+      },
     },
     {
-      path: "AboutCopy",
-      name: "useHook测试2",
-      component: () => import("@/views/About/AboutCopy.vue"),
-    },
-  ],
-}
+      path: '/About',
+      name: 'About',
+      component: () => import('@/views/About/About.vue'),
+      meta: {
+        title: "about",
 
+      },
+    },
+    {
+      path: '/AboutCopy',
+      name: 'AboutCopy',
+      component: () => import('@/views/About/AboutCopy.vue'),
+      meta: {
+        title: "AboutCopy",
+
+      },
+    }]
+};
