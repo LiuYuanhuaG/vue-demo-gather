@@ -2,7 +2,6 @@
   <div class="box_L">
     <!-- <div @click="handleClicks('About')">跳转about</div>
     <div @click="handleClicks('AboutCopy')">跳转AboutCopy</div> -->
-    <router-view></router-view>
     <InfiniteList :arr="arr">
       <template #content="{ itemData }">
         <div>{{ itemData.title }}</div>
