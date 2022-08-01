@@ -81,7 +81,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
    如果在window 下 则用git Bash 执行该文件
 
-   ![屏幕截图 2022-08-01 134026](./Markdown/屏幕截图 2022-08-01 134026.png)
+   ![2022-08-01-134026](./Markdown/2022-08-01-134026.png)
 
    或者在git Bash 命令行中键入
 
