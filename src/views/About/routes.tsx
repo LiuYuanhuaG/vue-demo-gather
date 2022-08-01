@@ -17,6 +17,11 @@ export default {
       name: "useHook测试2",
       component: () => import("@/views/About/AboutCopy.vue"),
     },
+    {
+      path: "Drop",
+      name: "Drop测试",
+      component: () => import("@/views/About/Drop.vue"),
+    },
   ],
 }
 

@@ -12,6 +12,7 @@
     "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": true,
     "sourceMap": true,
+    "allowJs": true,
     "baseUrl": ".",
     "types": ["webpack-env", "node", "element-plus/global"], //这里需要添加node 否则无法识别node中部分
     "paths": {
