@@ -8,7 +8,7 @@ export default {
   },
   children: [
     {
-      path: "/",
+      path: "/AboutView",
       name: "about",
       component: () => import("@/views/About/AboutView.vue"),
       meta: {

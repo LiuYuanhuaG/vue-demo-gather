@@ -1,8 +1,8 @@
 export default {
-  path: '/',
-  name: 'home',
-  component: () => import('@/views/Home/HomeView.vue'),
+  path: "/home",
+  name: "home",
+  component: () => import("@/views/Home/HomeView.vue"),
   meta: {
     title: "home",
   },
-};
+}
