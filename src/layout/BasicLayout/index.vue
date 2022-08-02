@@ -96,6 +96,7 @@ const handleBreadcrumb = () => {
 
       >div {
         height: 100%;
+        position: relative;
       }
     }
   }

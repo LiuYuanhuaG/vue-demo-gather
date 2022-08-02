@@ -4,6 +4,7 @@
  import HelloThree from '../views/HelloThree/routes';
  import Home from '../views/Home/routes';
  import InfiniteList from '../views/InfiniteList/routes';
+ import Map from '../views/Map/routes';
 
 export default [
   About,
@@ -11,4 +12,5 @@ export default [
   HelloThree,
   Home,
   InfiniteList,
+  Map,
 ]
