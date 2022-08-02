@@ -3,7 +3,7 @@ export default {
   path: "/about",
   name: "about",
   meta: {
-    title: "about",
+    title: "乱七八糟的操作",
     icon: <RightOutlined />,
   },
   children: [
@@ -12,7 +12,7 @@ export default {
       name: "about",
       component: () => import("@/views/About/AboutView.vue"),
       meta: {
-        title: "AboutView",
+        title: "vueHook useDark Demo",
       },
     },
     {

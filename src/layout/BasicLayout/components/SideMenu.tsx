@@ -1,18 +1,18 @@
-import { Layout, Menu, Space, } from 'ant-design-vue';
-import { RightOutlined, MenuFoldOutlined } from '@ant-design/icons-vue';
-import { PropType, h, Transition } from 'vue';
-import { MenuDataItem } from '../utils/typings';
-import router from '@/router';
-import './index.less';
+import { Layout, Menu, Space } from "ant-design-vue"
+import { RightOutlined, MenuFoldOutlined } from "@ant-design/icons-vue"
+import { PropType, h, Transition } from "vue"
+import { MenuDataItem } from "../utils/typings"
+import router from "@/router"
+import "./index.less"
 
-import { defineComponent, reactive, watchEffect } from 'vue'
+import { defineComponent, reactive, watchEffect } from "vue"
 
 export default defineComponent({
-  name: 'BaseMenu',
+  name: "BaseMenu",
   props: {
     theme: {
       type: String,
-      default: 'light',
+      default: "light",
     },
     menuWidth: {
       type: Number,
@@ -29,21 +29,19 @@ export default defineComponent({
       collapsed: false, // default value
       openKeys: [],
       selectedKeys: [],
-    });
+    })
 
     watchEffect(() => {
       if (router.currentRoute) {
-        const matched = router.currentRoute.value.matched.concat();
-        state.selectedKeys = matched.filter((r) => r.name !== 'index').map((r) => r.path);
-        state.openKeys = matched
-          .filter((r) => r.path !== router.currentRoute.value.path)
-          .map((r) => r.path);
+        const matched = router.currentRoute.value.matched.concat()
+        state.selectedKeys = matched.filter((r) => r.name !== "index").map((r) => r.path)
+        state.openKeys = matched.filter((r) => r.path !== router.currentRoute.value.path).map((r) => r.path)
       }
-    });
+    })
 
     const onSelect = (e: { key: string; item: { props: { routeid: number } } } | any) => {
-      router.push(e.key);
-    };
+      router.push(e.key)
+    }
 
     const getIcon = (Icon: any) => Icon
 
@@ -63,16 +61,16 @@ export default defineComponent({
             >
               {makeTreeDom(item.children)}
             </Menu.SubMenu>
-          );
+          )
         }
         return (
           <Menu.Item key={item.path}>
             {getIcon(item.meta?.icon as string)}
             <span>{item.meta?.title}</span>
           </Menu.Item>
-        );
-      });
-    };
+        )
+      })
+    }
 
     return () => {
       return (
@@ -86,14 +84,14 @@ export default defineComponent({
           onBreakpoint={(val) => (state.collapsed = val)}
           collapsible
           collapsed={state.collapsed}
-        // collapsedWidth={48}
+          // collapsedWidth={48}
         >
           {/* logo */}
           <Transition name="fade-top">
             {!state.collapsed && (
               <div class="my-sideMenu-sider_logo">
                 <Space align="center" class="link">
-                  <span class="font16 nowrap">vue-demo-gather</span>
+                  <span class="font16 nowrap">实验库</span>
                 </Space>
               </div>
             )}
@@ -113,13 +111,13 @@ export default defineComponent({
           {/* footer */}
           <div class="my-sideMenu-sider_footer">
             {h(state.collapsed ? RightOutlined : MenuFoldOutlined, {
-              className: 'trigger',
+              className: "trigger",
               style: { fontSize: 16 },
               onClick: () => (state.collapsed = !state.collapsed),
             })}
           </div>
         </Layout.Sider>
-      );
-    };
+      )
+    }
   },
-});
+})

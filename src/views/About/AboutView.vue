@@ -29,7 +29,6 @@ const handleClicks = (path) => {
 }
 
 
-console.log(toggleDark);
 </script>
 <style lang="scss">
 body[color-scheme='dark'] {

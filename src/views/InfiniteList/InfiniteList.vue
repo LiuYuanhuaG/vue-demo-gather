@@ -81,7 +81,7 @@ let _screenHeight = ref(0)
 function listHeight () {
   return props.arr.length * _itemSize;
 }
-console.log(listHeight());
+
 // 偏移量对应的style
 function getTransform () {
   return `translate3d(0,${_startOffset}px,0)`;

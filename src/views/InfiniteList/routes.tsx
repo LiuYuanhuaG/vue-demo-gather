@@ -4,6 +4,6 @@ export default {
   // redirect: "/InfiniteList/InfiniteList",
   component: () => import("@/views/InfiniteList/Index.vue"),
   meta: {
-    title: "InfiniteListIndex",
+    title: "无限滚动demo",
   },
 }
