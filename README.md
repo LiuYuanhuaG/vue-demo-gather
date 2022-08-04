@@ -23,6 +23,10 @@ yarn lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+### 提交规范
+
+https://www.jianshu.com/p/c7e40dab5b05
+
 ##### 部署到GitHub
 
 1. 在vue.config.js 文件中配置publicPath
