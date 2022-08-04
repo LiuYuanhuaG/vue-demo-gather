@@ -4089,6 +4089,13 @@ hosted-git-info@^2.1.4:
   resolved "https://registry.npmmirror.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
   integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
 
+howtools@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.npmmirror.com/howtools/-/howtools-0.2.2.tgz#8f3b7d29c28e38c421ed63592d29caf70932ee35"
+  integrity sha512-FKIJ1Vv9azWQM1M3DOS5CrQ5SD4w2EWlKrSHkovJ9K3kFqoH/P9vYsiIXorOWwO7Gno0lXA9gtwzHIntdnYHhw==
+  dependencies:
+    resize-observer-polyfill "^1.5.1"
+
 hpack.js@^2.1.6:
   version "2.1.6"
   resolved "https://registry.npmmirror.com/hpack.js/-/hpack.js-2.1.6.tgz#87774c0949e513f42e84575b3c45681fade2a0b2"
