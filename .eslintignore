@@ -16,3 +16,5 @@ yarn-error.log
 /public
 **/node_modules/**
 .npmrc
+/src
+/scripts
