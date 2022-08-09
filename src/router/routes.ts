@@ -5,6 +5,7 @@
  import HelloThree from '../views/HelloThree/routes';
  import Home from '../views/Home/routes';
  import InfiniteList from '../views/InfiniteList/routes';
+ import LockScreen from '../views/LockScreen/routes';
  import Map from '../views/Map/routes';
  import Word from '../views/Word/routes';
 
@@ -15,6 +16,7 @@ export default [
   HelloThree,
   Home,
   InfiniteList,
+  LockScreen,
   Map,
   Word,
 ]
