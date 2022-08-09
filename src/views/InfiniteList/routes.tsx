@@ -22,5 +22,14 @@ export default {
 				title: '无限滚动demo',
 			},
 		},
+		{
+			path: '/dorpFile',
+			name: 'DropUpload',
+			// redirect: "/InfiniteList/InfiniteList",
+			component: () => import('@/views/InfiniteList/dorpFile/Index.vue'),
+			meta: {
+				title: '拖拽上传文件demo',
+			},
+		},
 	],
 };
