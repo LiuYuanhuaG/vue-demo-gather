@@ -4,12 +4,7 @@
 			<div class="lock-box">
 				<h6 class="tips" @click="unLockLogin">前往登录</h6>
 			</div>
-			<component
-				:is="randomCompName"
-				:battery="battery"
-				:battery-status="batteryStatus"
-				:calc-discharging-time="calcDischargingTime"
-			/>
+			<component :is="randomCompName" :battery="battery" :battery-status="batteryStatus" :calc-discharging-time="calcDischargingTime" />
 		</template>
 
 		<template v-if="!state.isShowLogin">
@@ -18,6 +13,13 @@
 				<div class="date">{{ month }}月{{ day }}号，星期{{ week }}</div>
 			</div>
 		</template>
+		<vuetyped 
+		:strings="['我是', '一只', '可爱的羊驼']" 
+		:loop="true" 
+		:smart-backspace="true"
+		>
+			<div class="typing" style="marginLeft:130px"></div>
+		</vuetyped>
 	</div>
 </template>
 
@@ -30,6 +32,7 @@ import { useBattery } from '@/utils/useBattery';
 import { LOCAL_STORAGE } from '@/utils/request';
 // 状态管理依赖
 import { useStore } from 'vuex';
+import vuetyped from "vue3typed/libs/typed";
 
 const emit = defineEmits(['']);
 const store = useStore();
@@ -86,7 +89,7 @@ const unLockLogin = () => {
 		justify-content: center;
 		align-items: center;
 
-		> * {
+		>* {
 			margin-bottom: 14px;
 		}
 
@@ -172,7 +175,7 @@ const unLockLogin = () => {
 		bottom: 60px;
 		font-size: 24px;
 
-		> * {
+		>* {
 			margin-left: 14px;
 		}
 
@@ -191,6 +194,18 @@ const unLockLogin = () => {
 				transform: translate(-50%, -50%) rotate(45deg);
 			}
 		}
+	}
+
+	.overall-header-left {
+		align-self: center;
+		justify-self: center;
+		font-size: 32px;
+		/* 要给容器设置font-size */
+	}
+
+	.typing {
+		font-weight: 700;
+		font-size: 32px; 
 	}
 }
 </style>
