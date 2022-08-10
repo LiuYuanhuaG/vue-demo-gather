@@ -10,3 +10,4 @@ declare module 'file-saver';
 declare module 'docxtemplater';
 declare module 'howtools';
 declare module 'leaflet';
+declare module 'vue3typed';
