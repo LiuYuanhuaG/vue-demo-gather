@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkvue_demo_gather"]=self["webpackChunkvue_demo_gather"]||[]).push([[271],{94271:function(e,u,t){t.r(u),t.d(u,{default:function(){return s}});var o=t(73396);const n={class:"about"};var a={__name:"AboutCopy",setup(e){return console.log(1111111),(e,u)=>((0,o.wg)(),(0,o.iD)("div",n," 1111 AboutCopy.vue "))}};const r=a;var s=r}}]);
+//# sourceMappingURL=271.fec6a703.js.map
