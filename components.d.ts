@@ -14,7 +14,6 @@ declare module '@vue/runtime-core' {
     ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
     ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader']
     ATable: typeof import('ant-design-vue/es')['Table']
-    ATag: typeof import('ant-design-vue/es')['Tag']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
     ElCheckboxGroup: typeof import('element-plus/es')['ElCheckboxGroup']
